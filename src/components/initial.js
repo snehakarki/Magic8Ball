@@ -1,7 +1,9 @@
-import {useRef,useState} from 'react';
+import {useRef,useState, useContext} from 'react';
+import {MyContext} from '../context'
 
 
 const Initial = () =>{
+    const context = useContext(MyContext);
     const textInput= useRef();
     const [showNext,setShowNext] = useState(false);
     const [showError,setShowerror] = useState(false);
@@ -17,7 +19,11 @@ const Initial = () =>{
             setShowerror(true);
             return false;
         }
-        alert('NEXT');
+
+        
+        context.goTo(1);
+        context.question(value);
+      
 
     }
 
